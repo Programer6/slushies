@@ -1,8 +1,9 @@
-from flask import Flask, render_template
+
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    html = render_template("index.html")
-    return html
+    name = request.args.get("name", "World")
+    return render_template("index.html", name=name)
