@@ -1,17 +1,20 @@
 {% extends "layout.html" %}
 {% block body %}
+<nav>
+    <a href="/">Home</a> |
+    <a href="/challenge">Challenges</a> |
+    <a href="/history">History</a>
+  </nav>
 
-    <h1>Register</h1>
-    <form action="/register" method="post">
-        <input autocomplete="off" autofocus name="name"  placeholder="Name" pe="text">
-        <select name="sport">
-            <option disabled selected value="">Sport</option>
-            <option value="Basketball">Basketball</option>
-            <option value="Football">Football</option>
-            <option value="Tennis">Tennis</option>
-        </select>
-        <button type="submit">Register</button>
+  <h1>Your Joke:</h1>
+  <p>{{ joke }}</p>
+    <div>
+    <form method="post" action="/">
+        <label for="type">What kind of joke do you want?</label>
+        <input type="text" id="type" name="type" placeholder="e.g. programming, dad, short">
+        <button type="submit">Get Joke</button>
     </form>
-
+    </div>
+    
 
 {% endblock %}
