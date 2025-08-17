@@ -2,12 +2,13 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    if request.method == "POST":
-            return render_template("greet.html", name= request.form.get("name", "World"))
-    else:
-        return render_template("index.html")
+@app.route('/')
+def index():  
+    return render_template('index.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/submit', methods=['POST'])
+def submit():
+    if not request.form.get('name') or not request.form.get("sport"):
+        return render_template('error.html', error="All fields are required.")
+    else:
+        return render_template('success.html')
